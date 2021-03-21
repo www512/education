@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Homework 02-03">
+  <title>Homework 02-03</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-wrapper">
+      <h1>Homework 02-03. <span>JavaScript: Stack and Logger</span></h1>
+    </div>
+  </header>
+  <main class="main">
+    <div class="main-wrapper">
+      <div class="main__area">
+        <div class="main__buttons">
+          <button class="main-btn" id="add-user" type="button">Add user</button>
+          <button class="main-btn" id="delete-user" type="button">Delete user</button>
+          <button class="main-btn" id="view-stack" type="button">View the stack</button>
+          <button class="main-btn" id="clear-stack" type="button">Clear stack</button>
+        </div>
+        <form class="main__form off" id="form">
+          <p>Enter user details:</p>
+          <label class="visually-hidden" for="name">Name</label>
+          <input type="text" pattern="[A-Za-zА-Яа-яЁё]{3,20}" name="name" id="name" placeholder="Name" required title="Enter a name from 3 letters">
+          <label class="visually-hidden" for="surname">Surname</label>
+          <input type="text" pattern="[A-Za-zА-Яа-яЁё-]{2,30}" name="surname" id="surname" placeholder="Surname" required title="Enter a surname from 2 letters">
+          <label class="visually-hidden" for="age">Age</label>
+          <input type="number" min="0" max="160" name="age" id="age" placeholder="Age" required title="Age up to 160 years">
+          <button class="main__form__button" id="add" type="submit">Add</button>
+        </form>
+        <div class="main__block-deleted off">
+          <p>Last user deleted successfully</p>
+        </div>
+        <div class="main__block-stack off">
+          <p>Stack list</p>
+          <ol id="list" class="main__block-list">
+          </ol>
+        </div>
+        <div class="main__block-stack-empty off">
+          <p>Array is empty</p>
+        </div>
+        <div class="main__block-clear-stack off">
+          <p>The stack has been cleared successfully</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <ul class="footer__list">
+        <li class="footer__item">
+          <a href="https://t.me/evgenii_sea" aria-label="Telegram">
+            <img src="img/ico-telegram.png" width="18" height="18" alt="Telegram">
+          </a>
+        </li>
+        <li class="footer__item">
+          <a href="https://github.com/www512" aria-label="GitHub">
+              <img src="img/ico-github.png" width="18" height="18" alt="GitHub">
+          </a>
+        </li>
+        <li class="footer__item">
+          <a href="mailto:www512@yandex.ru?subject=Homework%20review%2002-03" aria-label="E-Mail">
+            <img src="img/ico-email.svg" width="18" height="18" alt="E-Mail">
+          </a>
+        </li>
+      </ul>
+      <p>&copy; Evgeny Stolbov</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
