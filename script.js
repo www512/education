@@ -51,18 +51,23 @@ viewStack.addEventListener('click', function() {
     mainBlockStackEmpty.classList.remove('off');
   }
 });
+
 clearStack.addEventListener('click', function() {
-  if (stack.length) {
-    stack = [];
-    mainBlockClearStack.classList.remove('off');
-    mainBlockStackEmpty.classList.add('off');
-  } else {
-    mainBlockStackEmpty.classList.remove('off');
-    mainBlockClearStack.classList.add('off');
-  }
   mainBlockStack.classList.add('off');
   mainForm.classList.add('off');
   mainBlockDeleted.classList.add('off');
+  try {
+    if (!stack.length) {
+      throw new SyntaxError('Error: Stack empty');
+    }
+    stack = [];
+    mainBlockClearStack.classList.remove('off');
+    mainBlockStackEmpty.classList.add('off');
+  } catch (error) {
+    console.log(error.message);
+    mainBlockStackEmpty.classList.remove('off');
+    mainBlockClearStack.classList.add('off');
+  }
 });
 
 function upName(name) {
@@ -89,12 +94,10 @@ function User(form) {
   logger.call(this);
 }
 
-add.addEventListener('click', function (){
+add.addEventListener('click', function() {
   if (form.name.value && form.surname.value && +form.age.value) {
     let user = new User(form);
     form.reset();
     stack.push(user);
-  } else {
-    alert('Fill in all the fields');
   }
 });
