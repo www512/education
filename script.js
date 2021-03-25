@@ -12,7 +12,12 @@ let mainBlockStackEmpty = document.querySelector('.main__block-stack-empty');
 let mainBlockClearStack = document.querySelector('.main__block-clear-stack');
 let form = document.forms.form;
 let stack = [];
-let date = new Date().toLocaleString();
+
+let logger = console.log;
+console.log = function (text) {
+  let date = new Date().toLocaleString();
+  logger.call(console, date + ' ' + text);
+}
 
 addUser.addEventListener('click', function() {
   mainForm.classList.remove('off');
@@ -78,10 +83,6 @@ function upSurname(surname) {
   return surname.charAt(0).toUpperCase() + surname.slice(1);
 }
 
-function logger() {
-  console.log(date + ' add user ' + this.user);
-}
-
 function User(form) {
   this.name = upName(form.name.value);
   this.surname = upSurname(form.surname.value);
@@ -91,7 +92,7 @@ function User(form) {
       return `${this.name} ${this.surname} with the age of ${this.age}`
     }
   })
-  logger.call(this);
+  console.log(this.user);
 }
 
 add.addEventListener('click', function() {
