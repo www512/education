@@ -65,6 +65,7 @@ clearStack.addEventListener('click', function() {
     if (!stack.length) {
       throw new SyntaxError('Error: Stack empty');
     }
+    console.log('Stack cleared successfully');
     stack = [];
     mainBlockClearStack.classList.remove('off');
     mainBlockStackEmpty.classList.add('off');
