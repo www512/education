@@ -37,6 +37,7 @@ deleteUser.addEventListener('click', function() {
   mainBlockStack.classList.add('off');
   mainForm.classList.add('off');
   mainBlockClearStack.classList.add('off');
+  console.log('Last user deleted successfully');
   stack.pop();
 });
 viewStack.addEventListener('click', function() {
@@ -46,6 +47,7 @@ viewStack.addEventListener('click', function() {
 
   if (stack.length) {
     mainBlockStack.classList.remove('off');
+    clearList();
       stack.forEach((item) => {
         let li = document.createElement('li');
         li.className = 'main__block-stack__item';
@@ -103,3 +105,10 @@ add.addEventListener('click', function() {
     stack.push(user);
   }
 });
+
+function clearList() {
+  liArray = list.querySelectorAll('li');
+  for (let li of liArray) {
+    li.remove();
+  }
+}
