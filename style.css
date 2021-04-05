@@ -71,6 +71,7 @@ body {
     padding: 136px 15px 100px;
 }
 .main__area {
+    margin-bottom: 50px;
     display: flex;
     justify-content: flex-start;
 }
@@ -231,4 +232,57 @@ body {
 
 .off {
     display: none;
+}
+
+.main__task05 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.task05 {
+    position: relative;
+    margin: 1% 1%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid dimgray;
+}
+.task05__close {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 25px;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+}
+.task05__close::before {
+    position: absolute;
+    content: "";
+    top: 12px;
+    left: 2px;
+    width: 21px;
+    height: 1px;
+    background-color: dimgray;
+    transform: rotate(45deg);
+}
+.task05__close::after {
+    position: absolute;
+    content: "";
+    top: 12px;
+    left: 2px;
+    width: 21px;
+    height: 1px;
+    background-color: dimgray;
+    transform: rotate(-45deg);
+}
+.task05__close:hover::before {
+    background-color: black;
+}
+.task05__close:hover::after{
+    background-color: black;
 }

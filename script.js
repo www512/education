@@ -10,6 +10,7 @@ let mainBlockDeleted = document.querySelector('.main__block-deleted');
 let mainBlockStack = document.querySelector('.main__block-stack');
 let mainBlockStackEmpty = document.querySelector('.main__block-stack-empty');
 let mainBlockClearStack = document.querySelector('.main__block-clear-stack');
+let mainTask05 = document.querySelector('.main__task05');
 let form = document.forms.form;
 let stack = [];
 
@@ -112,3 +113,49 @@ function clearList() {
     li.remove();
   }
 }
+let count = 0;
+function curry(f) {
+  return function (parent) {
+    return function (name) {
+      count++;
+      console.log(count);
+      if (count > 5) {
+        return alert('Exceeding the nesting limit');
+      }
+      return function (num) {
+        return f(parent, name, num)
+      }
+    }
+  }
+}
+
+function makeElement(parent, name, num) {
+  let parentWidth = mainTask05.offsetWidth;
+  num = (num > 5) ? num = 5 : num;
+  if (parent == 'body') {
+    for (let i = 0; i < num; i++) {
+      let block = document.createElement(name);
+      block.className = 'task05';
+      let blockWidth = (parentWidth / num) - (parentWidth * 0.02);
+      block.style.width = `${blockWidth}px`;
+      block.style.minHeight = `${blockWidth * 0.5}px`;
+      mainTask05.append(block);
+    }
+  } else {
+    let parentName = mainTask05.querySelectorAll(parent);
+    if (parentName.length == 0) { alert('Parent is missing') };
+    parentWidth = parentName[0].offsetWidth;
+    for (let item of parentName) {
+      for (let i = 0; i < num; i++) {
+        let block = document.createElement(name);
+        block.className = 'task05';
+        let blockWidth = ((parentWidth / num) - (parentWidth * 0.02)) - 2;
+        block.style.width = `${blockWidth}px`;
+        block.style.minHeight = `${blockWidth * 0.5}px`;
+        item.append(block);
+      }
+    }
+  }
+}
+
+let makeBlock = curry(makeElement);
