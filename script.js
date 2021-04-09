@@ -126,8 +126,8 @@ function curry(f) {
 
 function makeElement(parent, name, num) {
   if ((checkElementDepth (mainTask05)) > 5) {
-    alert('Exceeding the nesting limit')
-  } else {
+    return alert('Exceeding the nesting limit');
+  }
   let parentWidth = mainTask05.offsetWidth;
   num = (num > 5) ? num = 5 : num;
   if (parent == 'body') {
@@ -153,7 +153,6 @@ function makeElement(parent, name, num) {
         item.append(block);
       }
     }
-  }
   }
 }
 
