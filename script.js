@@ -133,6 +133,7 @@ function makeElement(parent, name, num) {
   if (parent == 'body') {
     for (let i = 0; i < num; i++) {
       let block = document.createElement(name);
+      createButtonClose(block);
       block.className = 'task05';
       let blockWidth = (parentWidth / num) - (parentWidth * 0.02);
       block.style.width = `${blockWidth}px`;
@@ -146,6 +147,7 @@ function makeElement(parent, name, num) {
     for (let item of parentName) {
       for (let i = 0; i < num; i++) {
         let block = document.createElement(name);
+        createButtonClose(block);
         block.className = 'task05';
         let blockWidth = ((parentWidth / num) - (parentWidth * 0.02)) - 2;
         block.style.width = `${blockWidth}px`;
@@ -161,7 +163,7 @@ let makeBlock = curry(makeElement);
 function checkElementDepth(element) {
   if (!element.children)
     return 0;
-  let max = 0;
+  let max = -1;
   for ( let i = 0; i < element.children.length; i++) {
     let h = checkElementDepth(element.children[i]);
     if (h > max) {
@@ -169,4 +171,14 @@ function checkElementDepth(element) {
     }
   }
   return max + 1;
+}
+
+function createButtonClose(block) {
+  let buttonWidth = block.offsetWidth * 0.1;
+  let buttonClose = document.createElement('button');
+  buttonClose.className = 'task05__close';
+  block.append(buttonClose);
+  buttonClose.addEventListener('click', function() {
+    buttonClose.parentElement.remove();
+  });
 }
