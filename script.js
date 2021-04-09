@@ -113,15 +113,10 @@ function clearList() {
     li.remove();
   }
 }
-let count = 0;
+
 function curry(f) {
   return function (parent) {
     return function (name) {
-      count++;
-      console.log(count);
-      if (count > 5) {
-        return alert('Exceeding the nesting limit');
-      }
       return function (num) {
         return f(parent, name, num)
       }
@@ -130,6 +125,9 @@ function curry(f) {
 }
 
 function makeElement(parent, name, num) {
+  if ((checkElementDepth (mainTask05)) > 5) {
+    alert('Exceeding the nesting limit')
+  } else {
   let parentWidth = mainTask05.offsetWidth;
   num = (num > 5) ? num = 5 : num;
   if (parent == 'body') {
@@ -156,6 +154,20 @@ function makeElement(parent, name, num) {
       }
     }
   }
+  }
 }
 
 let makeBlock = curry(makeElement);
+
+function checkElementDepth (element) {
+  let child = element.firstChild;
+  let childrenDepth = [];
+  if ( ! child ) {
+    return 1;
+  }
+  while (child) {
+    childrenDepth.push( checkElementDepth(child) );
+    child = child.nextSibling;
+  }
+  return Math.max.apply(Math, childrenDepth) + 1;
+}
