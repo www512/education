@@ -125,6 +125,7 @@ function curry(f) {
 }
 
 function makeElement(parent, name, num) {
+  console.log( checkElementDepth (mainTask05) );
   if ((checkElementDepth (mainTask05)) > 5) {
     alert('Exceeding the nesting limit')
   } else {
@@ -159,15 +160,15 @@ function makeElement(parent, name, num) {
 
 let makeBlock = curry(makeElement);
 
-function checkElementDepth (element) {
-  let child = element.firstChild;
-  let childrenDepth = [];
-  if ( ! child ) {
-    return 1;
+function checkElementDepth(element) {
+  if (!element.children)
+    return 0;
+  var max = 0;
+  for ( var i = 0; i < element.children.length; i++) {
+    var h = checkElementDepth(element.children[i]);
+    if (h > max) {
+      max = h;
+    }
   }
-  while (child) {
-    childrenDepth.push( checkElementDepth(child) );
-    child = child.nextSibling;
-  }
-  return Math.max.apply(Math, childrenDepth) + 1;
+  return max + 1;
 }
